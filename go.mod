@@ -1,3 +1,3 @@
-module go_easy_funcition
+module github.com/QAQTOT/go_easy_function
 
 go 1.20
