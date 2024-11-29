@@ -1,7 +1,7 @@
 package GoEasyFunction
 
 import (
-	"go_easy_funcition/easy_request"
+	"github.com/QAQTOT/go_easy_function/easy_request"
 	"testing"
 )
 
