@@ -3,11 +3,31 @@ package easy_request
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/QAQTOT/go_easy_function/quick_func"
 	"io"
 	"net/http"
 	"net/url"
 	"reflect"
 )
+
+func Get(host, uri string, params map[string]string) (string, error) {
+	c := &http.Client{}
+
+	queryStr := quick_func.HttpBuildQuery(params)
+
+	req, err := http.NewRequest("GET", host+uri+"?"+queryStr, nil)
+	if err != nil {
+		return "", err
+	}
+	response, err := c.Do(req)
+	if err != nil {
+		return "", err
+	}
+	defer response.Body.Close()
+	body, err := io.ReadAll(response.Body)
+
+	return string(body), err
+}
 
 func PostForm(host, uri string, data map[string]string) (string, error) {
 
